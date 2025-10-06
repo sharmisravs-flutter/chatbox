@@ -1,3 +1,4 @@
+import 'package:chatbox/presentation/pages/onboarding_page.dart';
 import 'package:chatbox/presentation/pages/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: SplashPage(),
+      home: OnboardingPage(),
     );
   }
 }
