@@ -1,5 +1,4 @@
-import 'package:chatbox/presentation/pages/onboarding_page.dart';
-import 'package:chatbox/presentation/pages/splash_page.dart';
+import 'package:chatbox/presentation/routes/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -24,13 +23,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: OnboardingPage(),
+      routerConfig: AppRoutes().router,
     );
   }
 }
