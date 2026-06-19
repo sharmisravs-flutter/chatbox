@@ -5,27 +5,27 @@ import 'dart:convert';
 class UserData {
   String name;
   String email;
-  String? id;
+  String? uid;
 
-  UserData({required this.name, required this.email, this.id});
+  UserData({required this.name, required this.email, this.uid});
 
-  UserData copyWith({String? name, String? email, String? id}) {
+  UserData copyWith({String? name, String? email, String? uid}) {
     return UserData(
       name: name ?? this.name,
       email: email ?? this.email,
-      id: id ?? this.id,
+      uid: uid ?? this.uid,
     );
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'email': email, 'id': id};
+    return <String, dynamic>{'name': name, 'email': email, 'uid': uid};
   }
 
   factory UserData.fromMap(Map<String, dynamic> map) {
     return UserData(
       name: map['name'] as String,
       email: map['email'] as String,
-      id: map['id'] != null ? map['id'] as String : null,
+      uid: map['uid'] != null ? map['uid'] as String : null,
     );
   }
 

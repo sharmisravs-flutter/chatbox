@@ -10,7 +10,7 @@ class AuthServices {
     required String password,
     required String name,
   }) async {
-    String res = "Some error occured";
+    String res = "Some error occurred";
     try {
       UserCredential cred = await _auth.createUserWithEmailAndPassword(
         email: email,
@@ -21,10 +21,9 @@ class AuthServices {
         "uid": cred.user!.uid,
         "email": email,
       });
-      print("Signup Done");
+      
       res = "success";
     } catch (err) {
-      print(err.toString());
       res = err.toString();
     }
     return res;
