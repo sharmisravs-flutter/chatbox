@@ -1,5 +1,8 @@
 import 'package:chatbox/core/utils/Validations.dart';
 import 'package:chatbox/core/utils/colors.dart';
+import 'package:chatbox/data/repos/auth_repo.dart';
+import 'package:chatbox/data/services/auth_service.dart';
+import 'package:chatbox/presentation/controllers/auth_controller.dart';
 import 'package:chatbox/presentation/widgets/IconButtonwithBorder.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,6 +17,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   late TextEditingController emailController;
   late TextEditingController passwordController;
+  late final AuthController authController;
 
   bool isValidData = false;
   bool showPassword = false;
@@ -24,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    authController = AuthController(AuthRepo(AuthServices()));
     super.initState();
   }
 
@@ -182,7 +187,21 @@ class _LoginPageState extends State<LoginPage> {
             Column(
               children: [
                 GestureDetector(
-                  onTap: isValidData ? () {} : null,
+                  onTap: isValidData
+                      ? () async {
+                          String result = await authController.login(
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
+                          if (result == 'success') {
+                            context.pushReplacement('/landing');
+                          } else {
+                            ScaffoldMessenger.of(
+                              context,
+                            ).showSnackBar(SnackBar(content: Text(result)));
+                          }
+                        }
+                      : null,
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(

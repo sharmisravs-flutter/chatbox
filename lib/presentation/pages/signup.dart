@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:chatbox/core/utils/Validations.dart';
 import 'package:chatbox/core/utils/colors.dart';
 import 'package:chatbox/data/repos/auth_repo.dart';
@@ -46,7 +48,6 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -162,6 +163,7 @@ class _SignupPageState extends State<SignupPage> {
                       if (value?.compareTo(passwordController.text) != 0) {
                         return "Enter same password as above";
                       }
+                      return null;
                     },
                     obscureText: true,
                     onChanged: (value) => _validateForm(),
@@ -181,7 +183,7 @@ class _SignupPageState extends State<SignupPage> {
                             password: passwordController.text.trim(),
                           );
                           if (result == 'success') {
-                            context.go('/home');
+                            context.pushReplacement('/landing');
                           } else {
                             ScaffoldMessenger.of(
                               context,
