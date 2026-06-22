@@ -15,15 +15,15 @@ class UserController {
     }
   }
 
-  Future<List<UserMsgsInfo>> getUserMsgInfo() async {
-    return await _userRepo.getUserMsgInfo();
+  Stream<List<UserMsgsInfo>> getUserMsgInfo() {
+    return _userRepo.getUserMsgInfo();
   }
 
   String currentUserUid() {
     return _userRepo.currentUserUid();
   }
 
-    Future<UserData> getUserDetailsByUid(String uid) async {
-      return await _userRepo.getUserDetailsByUid(uid);
-    }
+  Future<UserData> getUserDetailsByUid(String uid) async {
+    return await _userRepo.getUserDetailsByUid(uid);
+  }
 }

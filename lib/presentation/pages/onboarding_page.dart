@@ -13,6 +13,7 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
+  
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -64,14 +65,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       text: "Connect friends ",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: screenHeight / 10,
+                        fontSize: screenHeight / 15,
                       ),
                       children: [
                         TextSpan(
                           text: "easily & quickly",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: screenHeight / 10,
+                            fontSize: screenHeight / 15,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
