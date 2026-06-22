@@ -22,99 +22,96 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late List<UserStatus> userStatusList;
+  // late List<UserStatus> userStatusList;
 
   late UserController userController;
 
-  late Future<List<UserMsgsInfo>> userMsgsInfo;
-
   @override
   void initState() {
-    userStatusList = [
-      UserStatus(
-        name: "Barbara0",
-        postedAt: "2025-12-22T12:32:46.044Z",
-        profileImage: "https://picsum.photos/seed/22wvZEoUA/2652/3453",
-        status: "https://loremflickr.com/2781/2280?lock=3239396641404604",
-        messages: [],
-        id: "1",
-      ),
+    // userStatusList = [
+    //   UserStatus(
+    //     name: "Barbara0",
+    //     postedAt: "2025-12-22T12:32:46.044Z",
+    //     profileImage: "https://picsum.photos/seed/22wvZEoUA/2652/3453",
+    //     status: "https://loremflickr.com/2781/2280?lock=3239396641404604",
+    //     messages: [],
+    //     id: "1",
+    //   ),
 
-      UserStatus(
-        name: "Carli_Hayes",
-        postedAt: "2025-08-04T23:28:18.244Z",
-        profileImage: "https://picsum.photos/seed/gEOfky/3081/284",
-        status: "https://loremflickr.com/489/3493?lock=4034843657113024",
-        messages: [],
-        id: "2",
-      ),
-      UserStatus(
-        name: "Lauryn_Hackett90",
-        postedAt: "2026-04-07T11:02:35.229Z",
-        profileImage: "https://picsum.photos/seed/KZWTX59PZ/1498/51",
-        status: "https://loremflickr.com/380/236?lock=8901454162145577",
-        messages: [],
-        id: "3",
-      ),
-      UserStatus(
-        name: "Wilhelmine.Gottlieb60",
-        postedAt: "2025-07-23T11:10:19.648Z",
-        profileImage: "https://loremflickr.com/2600/3401?lock=7955727233085894",
-        status: "https://picsum.photos/seed/mQ2gKAPf/1205/2474",
-        messages: [],
-        id: "4",
-      ),
-      UserStatus(
-        name: "Theo_DAmore64",
-        postedAt: "2026-05-18T07:46:45.260Z",
-        profileImage: "https://loremflickr.com/1138/1210?lock=2818502834799391",
-        status: "https://picsum.photos/seed/eub65H1HfX/1729/2473",
-        messages: [],
-        id: "5",
-      ),
-      UserStatus(
-        name: "Lisandro_Koepp5",
-        postedAt: "2025-07-06T09:52:03.477Z",
-        profileImage: "https://picsum.photos/seed/NgwlEb1/912/300",
-        status: "https://loremflickr.com/1392/2702?lock=829556971454609",
-        messages: [],
-        id: "6",
-      ),
-      UserStatus(
-        name: "Earlene88",
-        postedAt: "2025-12-13T09:23:41.616Z",
-        profileImage: "https://loremflickr.com/2987/1818?lock=5228624314038329",
-        status: "https://picsum.photos/seed/TqJb0xFZG/2631/354",
-        messages: [],
-        id: "7",
-      ),
-      UserStatus(
-        name: "Annie.Cole",
-        postedAt: "2025-07-20T12:15:41.716Z",
-        profileImage: "https://picsum.photos/seed/S63Nc/3822/283",
-        status: "https://loremflickr.com/176/700?lock=800829501263486",
-        messages: [],
-        id: "8",
-      ),
-      UserStatus(
-        name: "Sharon_Larkin10",
-        postedAt: "2026-03-28T08:43:58.225Z",
-        profileImage: "https://loremflickr.com/777/3644?lock=4490773414230801",
-        status: "https://loremflickr.com/1971/2795?lock=5918740394761195",
-        messages: [],
-        id: "9",
-      ),
-      UserStatus(
-        name: "Rolando_Vandervort",
-        postedAt: "2025-11-10T09:30:08.954Z",
-        profileImage: "https://picsum.photos/seed/1n6KZH6r3g/2097/2424",
-        status: "https://picsum.photos/seed/qD74VKsl/3315/790",
-        messages: [],
-        id: "10",
-      ),
-    ];
+    //   UserStatus(
+    //     name: "Carli_Hayes",
+    //     postedAt: "2025-08-04T23:28:18.244Z",
+    //     profileImage: "https://picsum.photos/seed/gEOfky/3081/284",
+    //     status: "https://loremflickr.com/489/3493?lock=4034843657113024",
+    //     messages: [],
+    //     id: "2",
+    //   ),
+    //   UserStatus(
+    //     name: "Lauryn_Hackett90",
+    //     postedAt: "2026-04-07T11:02:35.229Z",
+    //     profileImage: "https://picsum.photos/seed/KZWTX59PZ/1498/51",
+    //     status: "https://loremflickr.com/380/236?lock=8901454162145577",
+    //     messages: [],
+    //     id: "3",
+    //   ),
+    //   UserStatus(
+    //     name: "Wilhelmine.Gottlieb60",
+    //     postedAt: "2025-07-23T11:10:19.648Z",
+    //     profileImage: "https://loremflickr.com/2600/3401?lock=7955727233085894",
+    //     status: "https://picsum.photos/seed/mQ2gKAPf/1205/2474",
+    //     messages: [],
+    //     id: "4",
+    //   ),
+    //   UserStatus(
+    //     name: "Theo_DAmore64",
+    //     postedAt: "2026-05-18T07:46:45.260Z",
+    //     profileImage: "https://loremflickr.com/1138/1210?lock=2818502834799391",
+    //     status: "https://picsum.photos/seed/eub65H1HfX/1729/2473",
+    //     messages: [],
+    //     id: "5",
+    //   ),
+    //   UserStatus(
+    //     name: "Lisandro_Koepp5",
+    //     postedAt: "2025-07-06T09:52:03.477Z",
+    //     profileImage: "https://picsum.photos/seed/NgwlEb1/912/300",
+    //     status: "https://loremflickr.com/1392/2702?lock=829556971454609",
+    //     messages: [],
+    //     id: "6",
+    //   ),
+    //   UserStatus(
+    //     name: "Earlene88",
+    //     postedAt: "2025-12-13T09:23:41.616Z",
+    //     profileImage: "https://loremflickr.com/2987/1818?lock=5228624314038329",
+    //     status: "https://picsum.photos/seed/TqJb0xFZG/2631/354",
+    //     messages: [],
+    //     id: "7",
+    //   ),
+    //   UserStatus(
+    //     name: "Annie.Cole",
+    //     postedAt: "2025-07-20T12:15:41.716Z",
+    //     profileImage: "https://picsum.photos/seed/S63Nc/3822/283",
+    //     status: "https://loremflickr.com/176/700?lock=800829501263486",
+    //     messages: [],
+    //     id: "8",
+    //   ),
+    //   UserStatus(
+    //     name: "Sharon_Larkin10",
+    //     postedAt: "2026-03-28T08:43:58.225Z",
+    //     profileImage: "https://loremflickr.com/777/3644?lock=4490773414230801",
+    //     status: "https://loremflickr.com/1971/2795?lock=5918740394761195",
+    //     messages: [],
+    //     id: "9",
+    //   ),
+    //   UserStatus(
+    //     name: "Rolando_Vandervort",
+    //     postedAt: "2025-11-10T09:30:08.954Z",
+    //     profileImage: "https://picsum.photos/seed/1n6KZH6r3g/2097/2424",
+    //     status: "https://picsum.photos/seed/qD74VKsl/3315/790",
+    //     messages: [],
+    //     id: "10",
+    //   ),
+    // ];
     userController = UserController(UserRepo(UserService()));
-    userMsgsInfo = userController.getUserMsgInfo();
     super.initState();
   }
 
@@ -168,28 +165,28 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          Container(
-            height: screenHeight / 6,
-            color: Colors.black,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: userStatusList.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: CircleAvatar(
-                    radius: screenHeight / 35,
-                    backgroundImage: NetworkImage(
-                      userStatusList[index].profileImage,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
+          // Container(
+          //   height: screenHeight / 6,
+          //   color: Colors.black,
+          //   child: ListView.builder(
+          //     scrollDirection: Axis.horizontal,
+          //     itemCount: userStatusList.length,
+          //     itemBuilder: (context, index) {
+          //       return Padding(
+          //         padding: const EdgeInsets.all(8),
+          //         child: CircleAvatar(
+          //           radius: screenHeight / 35,
+          //           backgroundImage: NetworkImage(
+          //             userStatusList[index].profileImage,
+          //           ),
+          //         ),
+          //       );
+          //     },
+          //   ),
+          // ),
           Expanded(
-            child: FutureBuilder<List<UserMsgsInfo>>(
-              future: userMsgsInfo,
+            child: StreamBuilder<List<UserMsgsInfo>>(
+              stream: userController.getUserMsgInfo(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(child: const CircularProgressIndicator());

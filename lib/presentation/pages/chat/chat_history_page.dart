@@ -24,6 +24,8 @@ class _ChatHistoryState extends State<ChatHistory> {
 
   late final ChatController _chatController;
 
+  bool isSending = false;
+
   @override
   void initState() {
     msgController = TextEditingController();
@@ -87,11 +89,10 @@ class _ChatHistoryState extends State<ChatHistory> {
                   final messages = snapshot.data ?? [];
 
                   return ListView.builder(
-                    // reverse: true,
+                    reverse: true,
                     itemCount: messages.length,
                     itemBuilder: (context, index) {
-                      final message = messages[index];
-
+                      final message = messages[messages.length - 1 - index];
                       final isMe =
                           message.messageFrom ==
                           FirebaseAuth.instance.currentUser?.uid;
@@ -144,6 +145,9 @@ class _ChatHistoryState extends State<ChatHistory> {
             SizedBox(height: 15),
             InkWell(
               onTap: () async {
+                setState(() {
+                  isSending = true;
+                });
                 Message message = Message(
                   msg: msgController.text,
                   dateTime: DateTime.now().toString(),
@@ -157,6 +161,10 @@ class _ChatHistoryState extends State<ChatHistory> {
                     msg: message,
                   );
                   msgController.clear();
+
+                  setState(() {
+                    isSending = false;
+                  });
                 } catch (e) {
                   ScaffoldMessenger.of(
                     context,
@@ -169,7 +177,13 @@ class _ChatHistoryState extends State<ChatHistory> {
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text("Send", style: TextStyle(color: Colors.white)),
+                child: isSending
+                    ? SizedBox(
+                        height: screenHeight / 40,
+                        width: screenHeight / 40,
+                        child: CircularProgressIndicator(),
+                      )
+                    : Text("Send", style: TextStyle(color: Colors.white)),
               ),
             ),
           ],

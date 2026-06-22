@@ -30,16 +30,17 @@ class UserService {
     return messages;
   }
 
-  Future<List<UserMsgsInfo>> getUserMsgInfo() async {
+  Stream<List<UserMsgsInfo>> getUserMsgInfo() {
     final currentUID = _auth.currentUser?.uid;
-    final snapshot = await _firestore
+    return _firestore
         .collection('chats')
         .where('uids', arrayContains: currentUID)
-        .get();
-    final List<UserMsgsInfo> msgsInfo = snapshot.docs
-        .map((doc) => UserMsgsInfo.fromMap(doc.data()))
-        .toList();
-    return msgsInfo;
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => UserMsgsInfo.fromMap(doc.data()))
+              .toList(),
+        );
   }
 
   Future<UserData> getUserDetailsByUid(String uid) async {

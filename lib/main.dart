@@ -1,20 +1,12 @@
+import 'package:chatbox/firebase_options.dart';
 import 'package:chatbox/presentation/routes/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: "AIzaSyAZPzFN-yl2R9XIue0E0MAqRHh9-9I1bZk",
-      authDomain: "chatbox-a9a34.firebaseapp.com",
-      projectId: "chatbox-a9a34",
-      storageBucket: "chatbox-a9a34.firebasestorage.app",
-      messagingSenderId: "488039957129",
-      appId: "1:488039957129:web:f2e34a495cbfdcd1e13c58",
-      measurementId: "G-DVSLHLGR0B",
-    ),
-  );
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 

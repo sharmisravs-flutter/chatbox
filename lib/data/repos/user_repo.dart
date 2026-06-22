@@ -11,8 +11,8 @@ class UserRepo {
     return await _userService.getUsers();
   }
 
-  Future<List<UserMsgsInfo>> getUserMsgInfo() async {
-    return await _userService.getUserMsgInfo();
+  Stream<List<UserMsgsInfo>> getUserMsgInfo() {
+    return _userService.getUserMsgInfo();
   }
 
   String currentUserUid() {
